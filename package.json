@@ -1,0 +1,25 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "Fetch API data from visualcrossing.com to display  the current weather from different locations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j0ej8ck92/Weather-App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/j0ej8ck92/Weather-App/issues"
+  },
+  "homepage": "https://github.com/j0ej8ck92/Weather-App#readme",
+  "devDependencies": {
+    "webpack": "^5.108.4",
+    "webpack-cli": "^7.2.1"
+  }
+}
