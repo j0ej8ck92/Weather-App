@@ -36,16 +36,50 @@ const getSearch = function(search){
 }
 
 function displayWeather(data){
-    const location = data[0].location;
-    const day = data[3].days.dayEight.datetime;
-
-    const dayIndex = new Date(day).getDay();
-
-    console.log(day);
-    console.log(dayIndex);
+    const forecast = getForecast(data);
+    console.log(forecast);
+    console.log(forecast[0]);
+    console.log(forecast[1]);
+   
 }
 
+function getForecast(data){
+    const dayElement = data.find((days) => days === data[3]);
+    const tenDays = dayElement.days;
+    console.log(tenDays);
+    const arrOfDays = Object.values(tenDays);
+    console.log(arrOfDays);
 
+    const forecast = [
+        getDayOfWeek(arrOfDays[0].datetime),
+        getDayOfWeek(arrOfDays[1].datetime),
+        getDayOfWeek(arrOfDays[2].datetime),
+        getDayOfWeek(arrOfDays[3].datetime),
+        getDayOfWeek(arrOfDays[4].datetime),
+        getDayOfWeek(arrOfDays[5].datetime),
+        getDayOfWeek(arrOfDays[6].datetime),
+        getDayOfWeek(arrOfDays[7].datetime),
+        getDayOfWeek(arrOfDays[8].datetime),
+        getDayOfWeek(arrOfDays[9].datetime),
+    ];
+
+    return forecast; 
+}
+
+function getDayOfWeek(day){
+    const week = [
+        'Sunday', 
+        'Monday', 
+        'Tuesday',
+        'Wednesday', 
+        'Thursday', 
+        'Friday', 
+        'Saturday'
+    ];
+    const dayIndex = new Date(day).getDay();
+    const dayOfWeek = week[dayIndex];
+    return dayOfWeek;
+}
 
 function getWeatherData(data){
     console.log(data);

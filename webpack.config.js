@@ -1,6 +1,11 @@
 // webpack.config.js
 import path from "node:path";
+import { createRequire } from "node:module";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import webpack from "webpack";
+import { supportedLocales } from "./dates.config.js";
+
+const require = createRequire(import.meta.url);
 
 export default {
   mode: "development",
@@ -14,10 +19,19 @@ export default {
   devServer: {
     watchFiles: ["./src/template.html"],
   },
+  resolve: {
+    alias: {
+      "date-fns-locale": path.dirname(require.resolve("date-fns/package.json")),
+    },
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html",
     }),
+    new webpack.ContextReplacementPlugin(
+      /date-fns[/\\]locale/,
+      new RegExp(`(${supportedLocales.join("|")})\.js$`),
+    ),
   ],
   module: {
     rules: [
