@@ -1,7 +1,7 @@
 // greeting.js
 export const greeting = "Hello, Odinite!";
 
-export class WeatherCondition {
+export class WeatherConditions {
     constructor(
         condition, 
         feelsLike,
@@ -31,4 +31,24 @@ export class WeatherCondition {
             this.windGust = windGust;
             this.windSpeed = windSpeed;
     }
+}
+
+export function getConditions(current){
+    const conditions = new WeatherConditions(
+        current.conditions,
+        current.feelslike,
+        current.humidity,
+        current.precip,
+        current.precipprob,
+        current.snow,
+        current.sunrise,
+        current.sunset,
+        current.temp,
+        current.uvindex,
+        current.visibility,
+        current.windgust,
+        current.windspeed
+    );
+
+    return conditions;
 }

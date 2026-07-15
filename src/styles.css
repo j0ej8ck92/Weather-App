@@ -1,0 +1,132 @@
+/*@import "weather-icons.css";*/
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+
+  
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: "IBM Plex Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: aqua;
+  min-height: 100vh;
+}
+
+.wrapper {
+  display: grid;
+}
+
+.search {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 3em;
+  margin-right: 12.5em;
+}
+
+#form{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+label[for="weather-search"] {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1;
+}
+
+input[type="search"], .search-button {
+  box-sizing: border-box;
+
+}
+
+input[type="search"]{
+  appearance: none;
+  width: 25em;
+  height: 2.25em;
+  border-radius: 15px;
+  border: none;
+  background:
+  linear-gradient(.25turn, rgb(236, 235, 235), 30%, rgb(77, 77, 77));
+  cursor: pointer;
+  padding: 0 1em;
+}
+
+input[placeholder="Type here..."]::placeholder{
+  color: black;
+  font-weight: bold;
+  padding-left: .5em;
+}
+
+.search-button {
+  /*height: 2em;
+  width: 6em;
+  border-radius: 8px;
+  border: none;
+  */
+  height: 2em;
+  width: 6em;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 15px;
+  background-color: rgb(8, 25, 30);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1em;
+  letter-spacing: 1px;
+}
+
+.search-button:active {
+  background-color: rgb(3, 49, 61);
+  color: white;
+  transform: scale(0.94);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5em;
+  
+}
+
+.location {
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.main-temp {
+  font-size: 4em;
+}
+
+.condition, .main-temp-range {
+  padding-right: 2em;
+  font-weight: 500;
+}
+
+.condition {
+  font-size: 1.2em;
+}
+
+.main-temp-range {
+  display: flex;
+  gap: 5px;
+}
+
+
+.wi {
+    color: red;
+}
+
+.wi-celsius {
+    font-size: 2em;
+}
+
+.wi-fahrenheit {
+    font-size: 2em;
+}

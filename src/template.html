@@ -7,14 +7,37 @@
     <title>Weather App</title>
 </head>
 <body>
+ <div class="wrapper">
     <div class="search">
-    <search>
-        <form id="form">
-            <label for="weather-search">Type Your Location:</label>
-            <input type="search" id="weather-search" name="weather-search" placeholder="Type here..." required>
-            <button type="submit">SEARCH</button>
-        </form>
-    </search>
-  </div>
+        <search>
+            <form id="form">
+                <!--<label for="weather-search">Location:</label>-->
+                <input type="search" id="weather-search" name="weather-search" placeholder="Type here..." required>
+                <button class="search-button" type="submit">SEARCH</button>
+            </form>
+        </search>
+    </div> <!--search end-->
+
+    <div class="main">
+        <div class="location">Virginia Beach, VA, United States</div>
+        <div class="main-temp">77&deg</div>
+        <div class="condition">Clear</div>
+        <div class="main-temp-range">
+            <div class="high-temp">H: 82&deg</div>
+            <div class="low-temp">L: 75&deg</div>
+        </div>
+    </div> <!--main end-->
+    <div class="days-forecast">
+
+    </div>
+    <div class="conditions">
+        
+    </div>
+
+    <div class="wi wi-day-sunny"></div>
+    <div class="wi wi-celsius"></div>
+    <div class="wi wi-fahrenheit"></div>
+ </div> <!--wrapper end-->
+
 </body>
 </html>

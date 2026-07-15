@@ -1,6 +1,8 @@
 // src/index.js
+import "./css/weather-icons.css";
 import "./styles.css";
-import { greeting, WeatherCondition } from "./conditions.js";
+import { greeting, WeatherConditions, getConditions } from "./conditions.js";
+import { Days, getDays } from "./days.js";
 
 console.log(greeting);
 
@@ -35,49 +37,41 @@ const getSearch = function(search){
 
 function displayWeather(data){
     const location = data[0].location;
-    console.log(location);
+    const day = data[3].days.dayEight.datetime;
+
+    const dayIndex = new Date(day).getDay();
+
+    console.log(day);
+    console.log(dayIndex);
 }
+
+
 
 function getWeatherData(data){
-            console.log(data);
-            const address = data.resolvedAddress;
-            const description = data.description;
-            const currentConditions = data.currentConditions; 
+    console.log(data);
+    const address = data.resolvedAddress;
+    const description = data.description;
+    const currentConditions = data.currentConditions;
+    const days = data.days 
 
-            const result = getConditions(currentConditions);
-            console.log(result);
+    const conditionsResult = getConditions(currentConditions);
+    console.log(conditionsResult);
 
-            const weatherData = [
-                { location: `${data.resolvedAddress}`},
-                { description: `${data.description}`},
-                { conditions: result },
-            ]
+    const dayResults = getDays(days);
 
-            console.log(weatherData);
+    console.log(dayResults);
 
-            console.log(weatherData[2].conditions.humidity);
-            return weatherData;
+    const weatherData = [
+        { location: `${data.resolvedAddress}`},
+        { description: `${data.description}`},
+        { conditions: conditionsResult },
+        { days: dayResults },
+    ];
 
-}
+    console.log(weatherData);
+    console.log(weatherData[2].conditions.humidity);
+    return weatherData;
 
-function getConditions(current){
-    const conditions = new WeatherCondition(
-        current.conditions,
-        current.feelslike,
-        current.humidity,
-        current.precip,
-        current.precipprob,
-        current.snow,
-        current.sunrise,
-        current.sunset,
-        current.temp,
-        current.uvindex,
-        current.visibility,
-        current.windgust,
-        current.windspeed
-    );
-
-    return conditions;
 }
 
 const weatherForm = document.getElementById('form');
