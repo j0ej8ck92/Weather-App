@@ -96,8 +96,8 @@ input[placeholder="Type here..."]::placeholder{
 }
 
 .location {
-  font-size: 1.5em;
-  font-weight: 600;
+  font-size: 2.5em;
+  font-weight: 800;
 }
 
 .main-temp {
@@ -118,9 +118,46 @@ input[placeholder="Type here..."]::placeholder{
   gap: 5px;
 }
 
+.display-container {
+  max-width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+}
+
+.days-forecast {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  gap: 1em;
+  border: 2px solid black;
+
+}
+
+.day-forecast {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
+.date {
+  font-size: 1.75em;
+  font-weight: 800;
+}
+
 
 .wi {
-    color: red;
+    color: black;
+    font-size: 2.75em;
+}
+
+.temp-low, .temp-high {
+  font-size: 1.75em;
+  font-weight: 600;
 }
 
 .wi-celsius {

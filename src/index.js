@@ -2,7 +2,8 @@
 import "./css/weather-icons.css";
 import "./styles.css";
 import { greeting, WeatherConditions, getConditions } from "./conditions.js";
-import { Days, getDays } from "./days.js";
+import { Days, getDays, getForecast, getForecastTemps, 
+         getDayOfWeek, getDayConditions, getIconByText } from "./days.js";
 
 console.log(greeting);
 
@@ -37,48 +38,40 @@ const getSearch = function(search){
 
 function displayWeather(data){
     const forecast = getForecast(data);
+    const temps = getForecastTemps(data);
+    const dayConditions = getDayConditions(data);
     console.log(forecast);
-    console.log(forecast[0]);
-    console.log(forecast[1]);
-   
-}
+    console.log(temps);
+    console.log(dayConditions);
+    const dateElements = document.querySelectorAll('.date');
+    const iconElements = document.querySelectorAll('.icon');
+    const tempLowElements = document.querySelectorAll('.temp-low');
+    const tempHighElements = document.querySelectorAll('.temp-high');
 
-function getForecast(data){
-    const dayElement = data.find((days) => days === data[3]);
-    const tenDays = dayElement.days;
-    console.log(tenDays);
-    const arrOfDays = Object.values(tenDays);
-    console.log(arrOfDays);
 
-    const forecast = [
-        getDayOfWeek(arrOfDays[0].datetime),
-        getDayOfWeek(arrOfDays[1].datetime),
-        getDayOfWeek(arrOfDays[2].datetime),
-        getDayOfWeek(arrOfDays[3].datetime),
-        getDayOfWeek(arrOfDays[4].datetime),
-        getDayOfWeek(arrOfDays[5].datetime),
-        getDayOfWeek(arrOfDays[6].datetime),
-        getDayOfWeek(arrOfDays[7].datetime),
-        getDayOfWeek(arrOfDays[8].datetime),
-        getDayOfWeek(arrOfDays[9].datetime),
-    ];
 
-    return forecast; 
-}
+    forecast.forEach((date, index) => {
+        if (index === 0) {
+            dateElements[index].textContent = 'Today';
+        } else {
+            dateElements[index].textContent = date;
+        }
 
-function getDayOfWeek(day){
-    const week = [
-        'Sunday', 
-        'Monday', 
-        'Tuesday',
-        'Wednesday', 
-        'Thursday', 
-        'Friday', 
-        'Saturday'
-    ];
-    const dayIndex = new Date(day).getDay();
-    const dayOfWeek = week[dayIndex];
-    return dayOfWeek;
+    })
+
+    dayConditions.forEach((condition, index) => {
+        if (iconElements[index]) {
+            const iconClass = getIconByText(condition);
+            iconElements[index].className = `icon wi ${iconClass}`;
+        }
+    });
+    
+    temps.forEach((temp, index) => {
+        if (tempLowElements[index] && tempHighElements[index]) {
+            tempLowElements[index].textContent = `L: ${temp[0]}`;
+            tempHighElements[index].textContent = `H: ${temp[1]}`;
+        }
+    })
 }
 
 function getWeatherData(data){
