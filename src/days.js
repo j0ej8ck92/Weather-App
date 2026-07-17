@@ -131,6 +131,8 @@ export function getIconByText(conditionText){
         case condition.includes('rain') || condition.includes('showers') || condition.includes('drizzle'):
            return 'wi-rain-wind';
         case condition.includes('cloud'):
+           return 'wi-day-cloudy';
+        case condition.includes('overcast'):
            return 'wi-cloudy';
         case condition.includes('clear') || condition.includes('sunny'):
            return 'wi-day-sunny';

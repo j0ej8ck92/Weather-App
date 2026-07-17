@@ -4,6 +4,7 @@ import "./styles.css";
 import { greeting, WeatherConditions, getConditions } from "./conditions.js";
 import { Days, getDays, getForecast, getForecastTemps, 
          getDayOfWeek, getDayConditions, getIconByText } from "./days.js";
+import { displayForecast, displayConditions, convertMilitaryToStandard } from "./ui.js";
 
 console.log(greeting);
 
@@ -37,41 +38,11 @@ const getSearch = function(search){
 }
 
 function displayWeather(data){
-    const forecast = getForecast(data);
-    const temps = getForecastTemps(data);
-    const dayConditions = getDayConditions(data);
-    console.log(forecast);
-    console.log(temps);
-    console.log(dayConditions);
-    const dateElements = document.querySelectorAll('.date');
-    const iconElements = document.querySelectorAll('.icon');
-    const tempLowElements = document.querySelectorAll('.temp-low');
-    const tempHighElements = document.querySelectorAll('.temp-high');
+     displayForecast(data);
+     displayConditions(data);
 
-
-
-    forecast.forEach((date, index) => {
-        if (index === 0) {
-            dateElements[index].textContent = 'Today';
-        } else {
-            dateElements[index].textContent = date;
-        }
-
-    })
-
-    dayConditions.forEach((condition, index) => {
-        if (iconElements[index]) {
-            const iconClass = getIconByText(condition);
-            iconElements[index].className = `icon wi ${iconClass}`;
-        }
-    });
-    
-    temps.forEach((temp, index) => {
-        if (tempLowElements[index] && tempHighElements[index]) {
-            tempLowElements[index].textContent = `L: ${temp[0]}`;
-            tempHighElements[index].textContent = `H: ${temp[1]}`;
-        }
-    })
+     
+  
 }
 
 function getWeatherData(data){
