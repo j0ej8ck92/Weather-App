@@ -1,8 +1,6 @@
 /*@import "weather-icons.css";*/
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
-  
-
 * {
   margin: 0;
   padding: 0;
@@ -12,12 +10,13 @@ html, body {
   font-family: "IBM Plex Sans", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
-  background-color: aqua;
+  background-color: rgb(22, 22, 39);
   min-height: 100vh;
 }
 
 .wrapper {
   display: grid;
+  margin-bottom: 5em;
 }
 
 .search {
@@ -25,6 +24,10 @@ html, body {
   justify-content: flex-end;
   margin-top: 3em;
   margin-right: 12.5em;
+}
+
+.hidden {
+  display: none;
 }
 
 #form{
@@ -63,11 +66,6 @@ input[placeholder="Type here..."]::placeholder{
 }
 
 .search-button {
-  /*height: 2em;
-  width: 6em;
-  border-radius: 8px;
-  border: none;
-  */
   height: 2em;
   width: 6em;
   border: 2px solid rgba(255, 255, 255, 0.4);
@@ -92,7 +90,8 @@ input[placeholder="Type here..."]::placeholder{
   justify-content: center;
   align-items: center;
   margin-top: 5em;
-  
+  color: white;
+  margin-bottom: 4em;
 }
 
 .location {
@@ -124,28 +123,34 @@ input[placeholder="Type here..."]::placeholder{
   max-width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-  border: 2px solid black;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  color: white;
+  gap: 2em;
   
 }
 
 .days-forecast {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-auto-rows: 4em;
-  gap: 1em;
-  border: 2px solid black;
+  grid-auto-rows: 4.5em;
+  gap: 2em;
+  border-radius: 10px;
+  padding-top: 1em;
   padding-left: 1em;
+  padding-right: 1em;
   padding-top: .5em;
-  padding-bottom: .5em;
-
+  padding-bottom: 1em;
+  background-color: rgb(26, 26, 43);
 }
 
 .day-forecast {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
+  border-bottom: 1px solid rgb(165, 165, 165);
+  padding-bottom: 1.25em;
+  padding-top: .5em;
   
 }
 
@@ -162,11 +167,14 @@ input[placeholder="Type here..."]::placeholder{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(5, 20%);
-  border: 1px solid red;
+  color: white;
+  gap: 1em;
 }
 
 .cond-rec {
-  border: 1px dotted blue;
+  border-radius: 10px;
+  padding-top: 2em;
+  background-color: rgb(26, 26, 43);
 }
 
 .cond-icon-and-text {
@@ -175,6 +183,7 @@ input[placeholder="Type here..."]::placeholder{
   align-items: center;
   gap: 1em;
   margin-top: 1em;
+  color: white;
 }
 
 .cond-text {
@@ -187,12 +196,11 @@ input[placeholder="Type here..."]::placeholder{
   align-items: center;
   font-size: 1.75em;
   font-weight: 800;
- 
+  margin-top: 1em;
 }
 
-
 .wi {
-    color: black;
+    color: white;
     font-size: 2.75em;
 }
 
@@ -201,10 +209,3 @@ input[placeholder="Type here..."]::placeholder{
   font-weight: 600;
 }
 
-.wi-celsius {
-    font-size: 2em;
-}
-
-.wi-fahrenheit {
-    font-size: 2em;
-}

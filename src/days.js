@@ -25,7 +25,6 @@ export class Days {
     }
 }
 
-
 export function getDays(days){
     const tenDayForecast = new Days(
         days[0],
@@ -74,6 +73,7 @@ export function getDayOfWeek(day){
         'Friday', 
         'Saturday'
     ];
+
     const dayIndex = new Date(day).getDay();
     const dayOfWeek = week[dayIndex];
     return dayOfWeek;
@@ -96,6 +96,7 @@ export function getForecastTemps(data){
         [arrOfDays[1].tempmin, arrOfDays[1].tempmax],
         [arrOfDays[1].tempmin, arrOfDays[1].tempmax],
     ];
+    
     return temps;
 }
 

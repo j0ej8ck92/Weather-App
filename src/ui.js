@@ -5,9 +5,6 @@ export function displayForecast(data) {
     const forecast = getForecast(data);
     const temps = getForecastTemps(data);
     const dayConditions = getDayConditions(data);
-    console.log(forecast);
-    console.log(temps);
-    console.log(dayConditions);
     const degree = String.fromCharCode(176);
     const locationDisplay = document.querySelector('.location');
     const mainTemp = document.querySelector('.main-temp');
@@ -52,7 +49,6 @@ export function displayForecast(data) {
 
 export function displayConditions(data){
     const degree = String.fromCharCode(176);
-    console.log(data);
     const feelsLike = document.getElementById('feels');
     const humidity = document.getElementById('humid');
     const precip = document.getElementById('precip');
@@ -64,9 +60,14 @@ export function displayConditions(data){
     const snow = document.getElementById('snow');
     const wind = document.getElementById('wind');
 
+    if ( data[2].conditions.precipitation === null ){
+        precip.textContent = 0;
+    } else {
+        precip.textContent = `${data[2].conditions.precipitation} inches`;
+    }
+
     feelsLike.textContent = data[2].conditions.feelsLike + degree;
-    humidity.textContent = `${data[2].conditions.humidity} inches`;
-    precip.textContent = `${data[2].conditions.precipitation} inches`;
+    humidity.textContent = `${data[2].conditions.humidity} %`;
     precipProb.textContent = `${data[2].conditions.precipitationProbability}%`;
     uv.textContent = data[2].conditions.uvIndex;
     vis.textContent = data[2].conditions.visibility;
@@ -74,11 +75,6 @@ export function displayConditions(data){
     sunset.textContent = convertMilitaryToStandard(data[2].conditions.sunset);
     snow.textContent = `${data[2].conditions.snow} inches`;
     wind.textContent = `${data[2].conditions.windSpeed} mph`;
-
-
-
-    console.log(feelsLike, humidity, precip, precipProb, uv, vis, sunrise, sunset, snow, wind);
-
 }
 
 export function convertMilitaryToStandard(timeStr){
